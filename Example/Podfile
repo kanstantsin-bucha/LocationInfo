@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'LocationInfo_Example' do
+  pod 'LocationInfo', :path => '../'
+
+  target 'LocationInfo_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
