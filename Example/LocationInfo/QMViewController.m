@@ -7,6 +7,10 @@
 //
 
 #import "QMViewController.h"
+#import <LocationInfo/LocationInfo.h>
+#import <LocationInfo/QMLocationInfoAppleConvertion.h>
+#import <LocationInfo/QMLocationInfoLuongConvertion.h>
+#import <LocationInfo/QMLocationAnnotation.h>
 
 @interface QMViewController ()
 
@@ -14,10 +18,20 @@
 
 @implementation QMViewController
 
-- (void)viewDidLoad
-{
+- (void) viewDidLoad {
+    
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    QMLocationInfo * info = [QMLocationInfo locationInfoUsingSublocation: @""
+                                                                    city: @""
+                                                                   state: @""
+                                                                 country: @""
+                                                             countryCode: @""
+                                                                location: nil];
+    
+    [QMLocationInfoAppleConvertion locationInfoUsingPlacemark: [CLPlacemark new]];
+    [QMLocationInfoLuongConvertion locationInfoUsingAddress: [LMAddress new]];
+    [QMLocationAnnotation annotationUsing: info];
 }
 
 - (void)didReceiveMemoryWarning

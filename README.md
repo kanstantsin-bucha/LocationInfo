@@ -8,6 +8,18 @@
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+```ObjC
+QMLocationInfo * info = [QMLocationInfo locationInfoUsingSublocation: @""
+                                        city: @""
+                                        state: @""
+                                        country: @""
+                                        countryCode: @""
+                                        location: nil];
+
+[QMLocationInfoAppleConvertion locationInfoUsingPlacemark: [CLPlacemark new]];
+[QMLocationInfoLuongConvertion locationInfoUsingAddress: [LMAddress new]];
+[QMLocationAnnotation annotationUsing: info];
+```
 
 ## Requirements
 

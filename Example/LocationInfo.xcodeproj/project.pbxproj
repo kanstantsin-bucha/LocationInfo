@@ -319,10 +319,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LocationInfo_Example/Pods-LocationInfo_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/LMGeocoderUniversal/LMGeocoderUniversal.framework",
 				"${BUILT_PRODUCTS_DIR}/LocationInfo/LocationInfo.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LMGeocoderUniversal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LocationInfo.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,7 +1,11 @@
 use_frameworks!
 
 target 'LocationInfo_Example' do
+  platform :ios, '9.0'
   pod 'LocationInfo', :path => '../'
+  pod 'LocationInfo/AppleGeocoder', :path => '../'
+  pod 'LocationInfo/LMGeocoder', :path => '../'
+  pod 'LocationInfo/AppleMap', :path => '../'
 
   target 'LocationInfo_Tests' do
     inherit! :search_paths
