@@ -47,7 +47,7 @@
 
 #pragma mark - life cycle -
 
-+ (instancetype)locationInfoUsingLocation:(QMLocation *)location {
++ (instancetype _Nullable) locationInfoUsingLocation: (QMLocation * _Nullable) location {
     if (location == nil) {
         return nil;
     }
@@ -57,14 +57,14 @@
     return result;
 }
 
-+ (instancetype)locationInfoUsingSublocation:(NSString *)sublocation
-                                        city:(NSString *)city
-                                       state:(NSString *)state
-                                     country:(NSString *)country
-                                 countryCode:(NSString *)countryCode
-                                    location:(QMLocation *)location {
++ (instancetype _Nullable) locationInfoUsingSublocation: (NSString * _Nullable) sublocation
+                                                   city:  (NSString * _Nullable) city
+                                                  state: (NSString * _Nullable) state
+                                                country: (NSString * _Nullable) country
+                                            countryCode: (NSString * _Nullable) countryCode
+                                               location: (QMLocation * _Nullable) location {
     
-    QMLocationInfo * result = [self locationInfoUsingLocation:location];
+    QMLocationInfo * result = [self locationInfoUsingLocation: location];
     
     if (result == nil) {
         BOOL emptyAddress = sublocation.length == 0
@@ -101,7 +101,7 @@
     return result;
 }
 
-- (BOOL)isSpecificPlaceOfLocation:(QMLocationInfo *)location {
+- (BOOL) isSpecificPlaceOfLocation: (QMLocationInfo * _Nonnull ) location {
     BOOL result = YES;
     if (location.country.length > 0) {
         result = [location.country isEqualToString: self.country];

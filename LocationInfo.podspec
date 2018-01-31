@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LocationInfo'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'It provides a common interface to location info for geocoding'
 
 # This description is used to generate tags and improve search results.

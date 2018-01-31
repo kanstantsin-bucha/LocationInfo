@@ -15,24 +15,24 @@
 // implemented in accordance with ITCP geographic fields description
 // https://www.iptc.org/std/photometadata/documentation/GenericGuidelines/index.htm#!Documents/iptccoreimagesection.htm
 
-@property (copy, nonatomic, readonly) NSString * sublocation;
-@property (copy, nonatomic, readonly) NSString * city;
-@property (copy, nonatomic, readonly) NSString * state;
-@property (copy, nonatomic, readonly) NSString * country;
-@property (copy, nonatomic, readonly) NSString * countryCode;
-@property (strong, nonatomic, readonly) QMLocation * location;
+@property (copy, nonatomic, readonly, nullable) NSString * sublocation;
+@property (copy, nonatomic, readonly, nullable) NSString * city;
+@property (copy, nonatomic, readonly, nullable) NSString * state;
+@property (copy, nonatomic, readonly, nullable) NSString * country;
+@property (copy, nonatomic, readonly, nullable) NSString * countryCode;
+@property (strong, nonatomic, readonly, nullable) QMLocation * location;
 
-@property (copy, nonatomic, readonly) NSString * address;
+@property (copy, nonatomic, readonly, nullable) NSString * address;
 
-+ (instancetype)locationInfoUsingLocation:(QMLocation *)location;
-+ (instancetype)locationInfoUsingSublocation:(NSString *)sublocation
-                                        city:(NSString *)city
-                                       state:(NSString *)state
-                                     country:(NSString *)country
-                                 countryCode:(NSString *)countryCode
-                                    location:(QMLocation *)location;
++ (instancetype _Nullable) locationInfoUsingLocation: (QMLocation * _Nullable) location;
++ (instancetype _Nullable) locationInfoUsingSublocation: (NSString * _Nullable) sublocation
+                                                   city:  (NSString * _Nullable) city
+                                                  state: (NSString * _Nullable) state
+                                                country: (NSString * _Nullable) country
+                                            countryCode: (NSString * _Nullable) countryCode
+                                               location: (QMLocation * _Nullable) location;
                                     
-- (BOOL)isSpecificPlaceOfLocation:(QMLocationInfo *)location;
+- (BOOL) isSpecificPlaceOfLocation: (QMLocationInfo * _Nonnull ) location;
 
 @end
 
