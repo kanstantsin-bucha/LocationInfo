@@ -13,8 +13,8 @@
 
 @interface QMLocationInfoAppleConvertion : NSObject
 
-+ (QMLocationInfo *) locationInfoUsingPlacemark: (CLPlacemark *) placemark;
-+ (CLLocation *) clLocationUsing: (QMLocation *) location;
++ (QMLocationInfo * _Nullable) locationInfoUsingPlacemark: (CLPlacemark * _Nonnull) placemark;
++ (CLLocation * _Nullable) clLocationUsing: (QMLocation * _Nonnull) location;
 
 @end
 

@@ -13,6 +13,6 @@
 
 @interface QMLocationInfoLuongConvertion : NSObject
 
-+ (QMLocationInfo *) locationInfoUsingAddress: (LMAddress *) address;
++ (QMLocationInfo * _Nullable) locationInfoUsingAddress: (LMAddress * _Nonnull) address;
 
 @end

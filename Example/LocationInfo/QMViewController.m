@@ -16,22 +16,24 @@
 
 @end
 
+
 @implementation QMViewController
 
 - (void) viewDidLoad {
     
     [super viewDidLoad];
-    
+    QMLocation * location = [QMLocation locationUsingLatitude: 40
+                                                    longitude: 150
+                                                    timestamp: nil];
     QMLocationInfo * info = [QMLocationInfo locationInfoUsingSublocation: @""
                                                                     city: @""
                                                                    state: @""
                                                                  country: @""
                                                              countryCode: @""
-                                                                location: nil];
-    
-    [QMLocationInfoAppleConvertion locationInfoUsingPlacemark: [CLPlacemark new]];
+                                                                location: location];
     [QMLocationInfoLuongConvertion locationInfoUsingAddress: [LMAddress new]];
-    [QMLocationAnnotation annotationUsing: info];
+    QMLocationAnnotation * annotation = [QMLocationAnnotation annotationUsing: info];
+    
 }
 
 - (void)didReceiveMemoryWarning

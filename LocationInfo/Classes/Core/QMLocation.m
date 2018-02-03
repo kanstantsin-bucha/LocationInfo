@@ -23,9 +23,9 @@
 
 #pragma mark - life cycle -
 
-+ (instancetype _Nullable) locationUsingLatitude: (double) latitude
-                                       longitude: (double) longitude
-                                       timestamp: (NSDate * _Nullable) timestamp {
++ (instancetype _Nonnull) locationUsingLatitude: (double) latitude
+                                      longitude: (double) longitude
+                                      timestamp: (NSDate * _Nullable) timestamp {
     if (latitude == 0
         && longitude == 0) {
         return nil;

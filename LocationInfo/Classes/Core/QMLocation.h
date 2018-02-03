@@ -15,9 +15,9 @@
 @property (assign, nonatomic) double longitude;
 @property (strong, nonatomic, nullable) NSDate * timestamp;
 
-+ (instancetype _Nullable) locationUsingLatitude: (double) latitude
-                                       longitude: (double) longitude
-                                       timestamp: (NSDate * _Nullable) timestamp;
++ (instancetype _Nonnull) locationUsingLatitude: (double) latitude
+                                      longitude: (double) longitude
+                                      timestamp: (NSDate * _Nullable) timestamp;
 
 @end
 

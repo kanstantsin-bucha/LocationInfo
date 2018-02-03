@@ -17,8 +17,8 @@ MKAnnotation
 >
 
 @property (assign, nonatomic) CLLocationCoordinate2D coordinate;
-@property (copy, nonatomic) NSString * title;
+@property (copy, nonatomic, nullable) NSString * title;
 
-+ (instancetype) annotationUsing: (QMLocationInfo *) info;
++ (instancetype _Nullable) annotationUsing: (QMLocationInfo * _Nonnull) info;
 
 @end

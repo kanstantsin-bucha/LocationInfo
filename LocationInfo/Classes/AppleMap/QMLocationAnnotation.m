@@ -13,7 +13,7 @@
 
 + (instancetype) annotationUsing: (QMLocationInfo *) info {
    
-    if (info == nil) {
+    if (info.location == nil) {
         return nil;
     }
     

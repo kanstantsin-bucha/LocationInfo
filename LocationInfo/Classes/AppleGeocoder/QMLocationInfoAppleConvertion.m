@@ -98,7 +98,8 @@
 }
 
 + (QMLocationInfo *) locationInfoUsingPlacemark: (CLPlacemark *) placemark {
-    if (placemark == nil) {
+    if (placemark == nil
+        || !placemark.location) {
         return nil;
     }
     
