@@ -7,6 +7,7 @@
 //
 
 #import "QMLocationInfoLuongConvertion.h"
+#import "QMLocationInfoAppleConvertion.h"
 
 @implementation QMLocationInfoLuongConvertion
 
@@ -16,6 +17,12 @@
 
     if (address == nil) {
         return nil;
+    }
+    
+    if ([address.rawSource isKindOfClass: [CLPlacemark class]]) {
+        QMLocationInfo * result =
+            [QMLocationInfoAppleConvertion locationInfoUsingPlacemark:(CLPlacemark *) address.rawSource];
+        return result;
     }
     
 //    NSLog(@"Address: streetNumber: %@, route: %@, neighborhood: %@, city: %@, subLocality: %@, locality: %@, subAdministrativeArea: %@, administrativeArea: %@, country: %@",
