@@ -15,6 +15,7 @@
 #import "QMLocationAnnotation.h"
 #import "QMLocation.h"
 #import "QMLocationInfo.h"
+#import "LocationInfo.h"
 #import "QMLocationInfoLuongConvertion.h"
 
 FOUNDATION_EXPORT double LocationInfoVersionNumber;
