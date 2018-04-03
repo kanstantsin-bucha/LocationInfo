@@ -11,6 +11,7 @@
 #import <LocationInfo/QMLocationInfoAppleConvertion.h>
 #import <LocationInfo/QMLocationInfoLuongConvertion.h>
 #import <LocationInfo/QMLocationAnnotation.h>
+#import <LMGeocoderUniversal/LMGeocoderUniversal.h>
 
 @interface QMViewController ()
 
@@ -22,6 +23,7 @@
 - (void) viewDidLoad {
     
     [super viewDidLoad];
+    
     QMLocation * location = [QMLocation locationUsingLatitude: 40
                                                     longitude: 150
                                                     timestamp: nil];
@@ -31,9 +33,22 @@
                                                                  country: @""
                                                              countryCode: @""
                                                                 location: location];
-    [QMLocationInfoLuongConvertion locationInfoUsingAddress: [LMAddress new]];
     QMLocationAnnotation * annotation = [QMLocationAnnotation annotationUsing: info];
     
+    [[LMGeocoder geocoder] geocodeAddressString:@"Sather Gate"
+                                        service:kLMGeocoderGoogleService
+                              completionHandler:^(NSArray<LMAddress *> * _Nullable results, NSError * _Nullable error) {
+                                  
+        QMLocationInfo * info = [QMLocationInfoLuongConvertion locationInfoUsingAddress: results.firstObject];
+        NSLog(@"google %@", info);
+    }];
+    
+    [[CLGeocoder new] geocodeAddressString: @"Sather Gate"
+                         completionHandler: ^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+                                 
+        QMLocationInfo * info = [QMLocationInfoAppleConvertion locationInfoUsingPlacemark: placemarks.firstObject];
+        NSLog(@"apple %@", info);
+    }];    
 }
 
 - (void)didReceiveMemoryWarning

@@ -19,6 +19,7 @@
 @property (copy, nonatomic, readonly, nullable) NSString * city;
 @property (copy, nonatomic, readonly, nullable) NSString * state;
 @property (copy, nonatomic, readonly, nullable) NSString * country;
+@property (copy, nonatomic, readonly, nullable) NSString * postalCode;
 @property (copy, nonatomic, readonly, nullable) NSString * countryCode;
 @property (strong, nonatomic, readonly, nullable) QMLocation * location;
 
@@ -28,6 +29,13 @@
 + (instancetype _Nullable) locationInfoUsingSublocation: (NSString * _Nullable) sublocation
                                                    city:  (NSString * _Nullable) city
                                                   state: (NSString * _Nullable) state
+                                                country: (NSString * _Nullable) country
+                                            countryCode: (NSString * _Nullable) countryCode
+                                               location: (QMLocation * _Nullable) location;
++ (instancetype _Nullable) locationInfoUsingSublocation: (NSString * _Nullable) sublocation
+                                                   city:  (NSString * _Nullable) city
+                                                  state: (NSString * _Nullable) state
+                                             postalCode: (NSString * _Nullable) postalCode
                                                 country: (NSString * _Nullable) country
                                             countryCode: (NSString * _Nullable) countryCode
                                                location: (QMLocation * _Nullable) location;

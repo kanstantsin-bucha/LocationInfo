@@ -98,8 +98,10 @@
 }
 
 + (QMLocationInfo *) locationInfoUsingPlacemark: (CLPlacemark *) placemark {
+    
     if (placemark == nil
         || !placemark.location) {
+        
         return nil;
     }
     
@@ -108,13 +110,14 @@
                                                     longitude: coordinate.longitude
                                                     timestamp: placemark.location.timestamp];
     
-    NSString * sublocation = [self sublocationUsingAddressDictionary: placemark.addressDictionary];
-    NSString * city = placemark.addressDictionary[@"City"];
-    NSString * state = [self stateUsingAddressDictionary: placemark.addressDictionary];
+    NSString * sublocation = [self sublocationUsingPlacemark: placemark];
+    NSString * city = placemark.locality;
+    NSString * state = [self stateUsingStateString: placemark.administrativeArea];
    
     QMLocationInfo * result = [QMLocationInfo locationInfoUsingSublocation: sublocation
                                                                       city: city
                                                                      state: state
+                                                                postalCode: placemark.postalCode
                                                                    country: placemark.country
                                                                countryCode: placemark.ISOcountryCode
                                                                   location: location];
@@ -123,60 +126,81 @@
 
 //MARK: - logic -
 
-+ (NSString *)stateUsingAddressDictionary:(NSDictionary *)address {
-    NSString * stateToProcess = address[@"State"];
++ (NSString *)stateUsingStateString: (NSString *) state {
     
-    NSString * result = nil;
-    if (stateToProcess.length > 0) {
-        NSString * USState = [[self class] statesByShortcut][stateToProcess];
-        if (USState.length > 0) {
-            result = USState;
-        } else {
-            result = stateToProcess;
-        }
+    if (state == nil) {
+        
+        return nil;
     }
+    
+    NSString * result = state;
+    
+    NSString * USState = [[self class] statesByShortcut][state];
+    
+    if (USState.length > 0) {
+        
+        result = USState;
+    }
+    
     return result;
 }
 
-+ (NSString *)sublocationUsingAddressDictionary:(NSDictionary *)address {
++ (NSString *)sublocationUsingPlacemark: (CLPlacemark *) placemark {
 
-    NSString * result = address[@"Name"];
+    NSString * result = placemark.name;
     
     // for coutry location [aka name] is equal to country name
     // so we ommit it to not frustrate users and geocoder
-    NSString * country = address[@"Country"];
+    NSString * country = placemark.country;
+    
     if (country.length > 0
         && [result isEqualToString:country]) {
+        
         result = nil;
     }
     
     // for city location sublocation [aka name] is equal to city and state name
     // so we ommit it to not frustrate users and geocoder
-    NSString * city = address[@"City"];
+    NSString * city = placemark.locality;
+    
     if (city.length > 0
         && [result containsString:city]) {
+        
         result = nil;
     }
     
     // for state location sublocation [aka name] is equal to state name
     // so we ommit it to not frustrate users and geocoder
-    NSString * state = [self stateUsingAddressDictionary:address];
+    NSString * state = [self stateUsingStateString: placemark.administrativeArea];
     if (state.length > 0
         && [result isEqualToString:state]) {
-        result = nil;
-    }
-    
-    if (city.length > 0
-        && [result containsString:city]) {
+        
         result = nil;
     }
     
     if (result.length == 0) {
-        result = address[@"SubLocality"];
+        
+        result = placemark.subLocality;
     }
     
     if (result.length == 0) {
-        result = address[@"Thoroughfare"];
+        
+        result = placemark.thoroughfare;
+    }
+    
+    if (result.length == 0) {
+        
+        result = placemark.inlandWater;
+    }
+    
+    if (result.length == 0) {
+        
+        result = placemark.ocean;
+    }
+    
+    if (result.length == 0) {
+        
+        result = placemark.areasOfInterest.firstObject;
     }
     
     return result;

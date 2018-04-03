@@ -1,6 +1,6 @@
 {
   "name": "LocationInfo",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "summary": "It provides a common interface to location info for geocoding",
   "description": "This LocationInfo interconnects different frameworks : image metadata processing, geocoding, speech recognition, etc. This used like shared data object amoung them all.",
   "homepage": "https://github.com/truebucha/LocationInfo",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/truebucha/LocationInfo.git",
-    "tag": "1.0.3"
+    "tag": "1.1.0"
   },
   "social_media_url": "https://twitter.com/truebucha",
   "platforms": {
@@ -28,6 +28,7 @@
   "subspecs": [
     {
       "name": "Initial",
+      "source_files": "LocationInfo/Classes/*",
       "public_header_files": "LocationInfo/Classes/*.h",
       "dependencies": {
         "LocationInfo/Core": [

@@ -31,11 +31,27 @@
     QMLocation * location = [QMLocation locationUsingLatitude: coordinate.latitude
                                                     longitude: coordinate.longitude
                                                     timestamp: [NSDate date]];
-    NSString * route = address.streetNumber;
-    if (address.route.length > 0) {
-        route = [route stringByAppendingFormat: @" %@", address.route];
+    NSString * route = @"";
+    
+    if (address.streetNumber.length > 0) {
+        route = [route stringByAppendingString: address.streetNumber];
     }
     
+    if (address.route.length > 0) {
+        
+        if (route.length > 0) {
+            
+            route = [route stringByAppendingString: @" "];
+        }
+        
+        route = [route stringByAppendingString: address.route];
+    }
+    
+    if (route.length == 0
+        && address.neighborhood.length > 0) {
+        route = [route stringByAppendingString: address.neighborhood];
+    }
+
     NSString * sublocation = route != nil ? route
                                           : address.subLocality;
 
@@ -46,6 +62,7 @@
     QMLocationInfo * result = [QMLocationInfo locationInfoUsingSublocation: sublocation
                                                                       city: city
                                                                      state: state
+                                                                postalCode: address.postalCode
                                                                    country: address.country
                                                                countryCode: address.ISOcountryCode
                                                                   location: location];

@@ -15,6 +15,7 @@
 @property (copy, nonatomic, readwrite) NSString * city;
 @property (copy, nonatomic, readwrite) NSString * state;
 @property (copy, nonatomic, readwrite) NSString * country;
+@property (copy, nonatomic, readwrite) NSString * postalCode;
 @property (copy, nonatomic, readwrite) NSString * countryCode;
 @property (strong, nonatomic, readwrite) QMLocation * location;
 
@@ -26,10 +27,12 @@
 #pragma mark - property -
 
 - (NSString *)address {
-    NSString * result = [self addressUsingSublocation:self.sublocation
-                                                 city:self.city
-                                                state:self.state
-                                              country:self.country];
+    
+    NSString * result = [self addressUsingSublocation: self.sublocation
+                                                 city: self.city
+                                                state: self.state
+                                           postalCode: self.postalCode
+                                              country: self.country];
     if (result.length == 0
         && self.location != nil) {
         result = [NSString stringWithFormat:@"%f, %f",
@@ -64,6 +67,24 @@
                                             countryCode: (NSString * _Nullable) countryCode
                                                location: (QMLocation * _Nullable) location {
     
+    QMLocationInfo * result = [self locationInfoUsingSublocation: sublocation
+                                                            city: city
+                                                           state: state
+                                                      postalCode: nil
+                                                         country: country
+                                                     countryCode: countryCode
+                                                        location: location];
+    return result;
+}
+
++ (instancetype _Nullable) locationInfoUsingSublocation: (NSString * _Nullable) sublocation
+                                                   city:  (NSString * _Nullable) city
+                                                  state: (NSString * _Nullable) state
+                                             postalCode: (NSString * _Nullable) postalCode
+                                                country: (NSString * _Nullable) country
+                                            countryCode: (NSString * _Nullable) countryCode
+                                               location: (QMLocation * _Nullable) location {
+    
     QMLocationInfo * result = [self locationInfoUsingLocation: location];
     
     if (result == nil) {
@@ -88,6 +109,11 @@
     
     if (state.length > 0) {
         result.state = state;
+    }
+    
+    if (postalCode.length > 0) {
+        
+        result.postalCode = postalCode;
     }
     
     if (country.length > 0) {
@@ -126,10 +152,11 @@
 
 
 
-- (NSString *)addressUsingSublocation:(NSString *)sublocation
-                                 city:(NSString *)city
-                                state:(NSString *)state
-                              country:(NSString *)country {
+- (NSString *)addressUsingSublocation: (NSString *) sublocation
+                                 city: (NSString *) city
+                                state: (NSString *) state
+                           postalCode: (NSString *) postalCode
+                              country: (NSString *) country {
     
     NSMutableArray * components = [NSMutableArray array];
     
@@ -143,6 +170,10 @@
     
     if (state != nil) {
         [components addObject:state];
+    }
+    
+    if (postalCode != nil) {
+        [components addObject: postalCode];
     }
     
     if (country != nil) {

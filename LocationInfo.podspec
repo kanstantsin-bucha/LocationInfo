@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LocationInfo'
-  s.version          = '1.0.3'
+  s.version          = '1.1.0'
   s.summary          = 'It provides a common interface to location info for geocoding'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ This LocationInfo interconnects different frameworks : image metadata processing
   s.source           = { :git => 'https://github.com/truebucha/LocationInfo.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/truebucha'
 
-    s.ios.deployment_target = '9.0'
+    s.ios.deployment_target = '10.0'
     s.osx.deployment_target = '10.10'
     s.requires_arc = true
 

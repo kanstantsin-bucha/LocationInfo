@@ -82,7 +82,8 @@ static NSString * const LMLinesKey                  = @"lines";
         NSString *formattedAddress = [lines componentsJoinedByString:@", "];
         
         _coordinate = placemark.location.coordinate;
-        _streetNumber = placemark.thoroughfare;
+        _streetNumber = placemark.name != nil ? placemark.name
+                                              : placemark.thoroughfare;
         _locality = placemark.locality;
         _subLocality = placemark.subLocality;
         _administrativeArea = placemark.administrativeArea;
@@ -225,6 +226,15 @@ static NSString * const LMLinesKey                  = @"lines";
 - (id)copyWithZone:(NSZone *)zone
 {
     return [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self]];
+}
+
+
+//MARK: - description -
+
+- (NSString *)description {
+    
+    NSString * result = [NSString stringWithFormat:@"<%@ %@>", NSStringFromClass([self class]), self.lines];
+    return result;
 }
 
 @end

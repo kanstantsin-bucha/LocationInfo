@@ -77,14 +77,12 @@ typedef void (^LMGeocodeCallback) (NSArray<LMAddress *> * _Nullable results,  NS
  *  Submits a synchronous forward-geocoding request using the specified string.
  *
  *  @param addressString The string describing the location you want to look up.
- *  @param service       The service API used to geocode.
  *  @param error         The error.
  *
  *  @return The geocode results.
  */
-- (nullable NSArray *)geocodeAddressString:(NSString *)addressString
-                                   service:(LMGeocoderService)service
-                                     error:(NSError **)error;
+- (nullable NSArray *)geocodeAtGoogleAddressString:(NSString *)addressString
+                                             error:(NSError **)error;
 
 /*!
  *  Submits a reverse-geocoding request for the specified coordinate.
