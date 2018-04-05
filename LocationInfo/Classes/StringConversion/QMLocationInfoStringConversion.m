@@ -54,8 +54,8 @@
         sublocation = [(NSString *)strings[2] length] != 0 ? strings[2] : nil;
         city = [(NSString *)strings[3] length] != 0 ? strings[3] : nil;
         state = [(NSString *)strings[4] length] != 0 ? strings[4] : nil;
-        country = [(NSString *)strings[5] length] != 0 ? strings[5] : nil;
-        postalCode = [(NSString *)strings[6] length] != 0 ? strings[6] : nil;
+        postalCode = [(NSString *)strings[5] length] != 0 ? strings[5] : nil;
+        country = [(NSString *)strings[6] length] != 0 ? strings[6] : nil;
         countryCode = [(NSString *)strings[7] length] != 0 ? strings[7] : nil;
     }
     
@@ -78,8 +78,8 @@
                            info.sublocation != nil ? info.sublocation : @"",
                            info.city != nil ? info.city : @"",
                            info.state != nil ? info.state : @"",
-                           info.country != nil ? info.country : @"",
                            info.postalCode != nil ? info.postalCode : @"",
+                           info.country != nil ? info.country : @"",
                            info.countryCode != nil ? info.countryCode : @"",
                         ];
     
