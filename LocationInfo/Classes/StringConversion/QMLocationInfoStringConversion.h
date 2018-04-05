@@ -12,7 +12,7 @@
 
 @interface QMLocationInfoStringConversion : NSObject
 
-+ (QMLocationInfo * _Nullable) locationInfoUsingString: (NSString * _Nonnull) string;
++ (QMLocationInfo * _Nullable) locationInfoUsingString: (NSString * _Nullable) string;
 + (NSString * _Nonnull) srtingRepresentationUsingLocationInfo: (QMLocationInfo * _Nonnull) info;
 
 @end

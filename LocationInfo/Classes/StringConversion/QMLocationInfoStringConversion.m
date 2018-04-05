@@ -14,7 +14,12 @@
 
 //MARK: - interface -
 
-+ (QMLocationInfo * _Nullable) locationInfoUsingString: (NSString * _Nonnull) string {
++ (QMLocationInfo * _Nullable) locationInfoUsingString: (NSString * _Nullable) string {
+    
+    if ( string == nil ) {
+        
+        return nil;
+    }
     
     NSArray * strings = [string componentsSeparatedByString: QMLocationInfoStringDelimiter];
     
