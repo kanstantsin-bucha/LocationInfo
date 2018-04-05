@@ -8,9 +8,6 @@
 
 #import "QMViewController.h"
 #import <LocationInfo/LocationInfo.h>
-#import <LocationInfo/QMLocationInfoAppleConvertion.h>
-#import <LocationInfo/QMLocationInfoLuongConvertion.h>
-#import <LocationInfo/QMLocationAnnotation.h>
 #import <LMGeocoderUniversal/LMGeocoderUniversal.h>
 
 @interface QMViewController ()
@@ -35,12 +32,16 @@
                                                                 location: location];
     QMLocationAnnotation * annotation = [QMLocationAnnotation annotationUsing: info];
     
-    [[LMGeocoder geocoder] geocodeAddressString:@"Sather Gate"
-                                        service:kLMGeocoderGoogleService
-                              completionHandler:^(NSArray<LMAddress *> * _Nullable results, NSError * _Nullable error) {
+    [[LMGeocoder geocoder] geocodeAddressString: @"Sather Gate"
+                                        service: kLMGeocoderGoogleService
+                              completionHandler: ^(NSArray<LMAddress *> * _Nullable results, NSError * _Nullable error) {
                                   
         QMLocationInfo * info = [QMLocationInfoLuongConvertion locationInfoUsingAddress: results.firstObject];
         NSLog(@"google %@", info);
+                                
+        NSString * conversion =  [QMLocationInfoStringConversion srtingRepresentationUsingLocationInfo: info];
+        NSLog(@"conversion : %@", conversion);
+        NSLog(@"converted back: %@", [QMLocationInfoStringConversion locationInfoUsingString: conversion]);
     }];
     
     [[CLGeocoder new] geocodeAddressString: @"Sather Gate"
@@ -48,13 +49,9 @@
                                  
         QMLocationInfo * info = [QMLocationInfoAppleConvertion locationInfoUsingPlacemark: placemarks.firstObject];
         NSLog(@"apple %@", info);
-    }];    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    }];
+    
+    
 }
 
 @end

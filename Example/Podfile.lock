@@ -1,26 +1,27 @@
 PODS:
   - LMGeocoderUniversal (1.2.2)
-  - LocationInfo (1.1.0):
-    - LocationInfo/Initial (= 1.1.0)
-  - LocationInfo/AppleGeocoder (1.1.0):
-    - LocationInfo/Initial
-  - LocationInfo/AppleMap (1.1.0):
-    - LocationInfo/AppleGeocoder
-    - LocationInfo/Initial
-  - LocationInfo/Core (1.1.0)
-  - LocationInfo/Initial (1.1.0):
+  - LocationInfo (1.1.1):
+    - LocationInfo/AppleGeocoder (= 1.1.1)
+    - LocationInfo/AppleMap (= 1.1.1)
+    - LocationInfo/Core (= 1.1.1)
+    - LocationInfo/LMGeocoder (= 1.1.1)
+    - LocationInfo/StringConversion (= 1.1.1)
+  - LocationInfo/AppleGeocoder (1.1.1):
     - LocationInfo/Core
-  - LocationInfo/LMGeocoder (1.1.0):
+  - LocationInfo/AppleMap (1.1.1):
+    - LocationInfo/AppleGeocoder
+    - LocationInfo/Core
+  - LocationInfo/Core (1.1.1)
+  - LocationInfo/LMGeocoder (1.1.1):
     - LMGeocoderUniversal
     - LocationInfo/AppleGeocoder
-    - LocationInfo/Initial
+    - LocationInfo/Core
+  - LocationInfo/StringConversion (1.1.1):
+    - LocationInfo/Core
 
 DEPENDENCIES:
   - LMGeocoderUniversal (~> 1.2)
   - LocationInfo (from `../`)
-  - LocationInfo/AppleGeocoder (from `../`)
-  - LocationInfo/AppleMap (from `../`)
-  - LocationInfo/LMGeocoder (from `../`)
 
 EXTERNAL SOURCES:
   LocationInfo:
@@ -28,8 +29,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   LMGeocoderUniversal: c093e8d7705745179ce93ff6d3c39e666e6bea67
-  LocationInfo: cbc9218a16a75de3f8c45d40fceafece59f5d6c4
+  LocationInfo: fd02f08982da97462ffdfa5748edf800a3e39285
 
-PODFILE CHECKSUM: 47c34345cba159598c55d96b50f8ab1be2b0806c
+PODFILE CHECKSUM: 32ce35a99582067d8691c76712915a83d9d3ce32
 
 COCOAPODS: 1.4.0

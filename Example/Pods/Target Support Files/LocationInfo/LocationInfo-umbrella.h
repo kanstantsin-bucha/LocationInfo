@@ -10,13 +10,19 @@
 #endif
 #endif
 
-#import "LocationInfo.h"
 #import "QMLocationInfoAppleConvertion.h"
 #import "QMLocationAnnotation.h"
 #import "QMLocation.h"
 #import "QMLocationInfo.h"
-#import "LocationInfo.h"
 #import "QMLocationInfoLuongConvertion.h"
+#import "LocationInfo.h"
+#import "QMLocationInfoStringConversion.h"
+#import "QMLocationInfoAppleConvertion.h"
+#import "QMLocationAnnotation.h"
+#import "QMLocation.h"
+#import "QMLocationInfo.h"
+#import "QMLocationInfoLuongConvertion.h"
+#import "QMLocationInfoStringConversion.h"
 
 FOUNDATION_EXPORT double LocationInfoVersionNumber;
 FOUNDATION_EXPORT const unsigned char LocationInfoVersionString[];

@@ -7,4 +7,8 @@
 
 #import "QMLocation.h"
 #import "QMLocationInfo.h"
+#import "QMLocationInfoAppleConvertion.h"
+#import "QMLocationInfoLuongConvertion.h"
+#import "QMLocationAnnotation.h"
+#import "QMLocationInfoStringConversion.h"
 
