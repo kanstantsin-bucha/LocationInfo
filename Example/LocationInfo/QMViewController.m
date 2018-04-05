@@ -38,8 +38,8 @@
     NSLog(@"converted from string format 2: latitude(signed double), longitude(signed double), city, state, country ");
     NSLog(@"converted back: %@", [QMLocationInfoStringConversion locationInfoUsingString: @"37.870255,-122.259487,Berkeley,California,United States"]);
     
-    NSLog(@"converted from string format 3: latitude(signed double), longitude(signed double), sublocation, city, state, country, postalCode, countryCode");
-    NSLog(@"converted back: %@", [QMLocationInfoStringConversion locationInfoUsingString: @"37.870255,-122.259487,Sather Road,Berkeley,California,United States,94720,US"]);
+    NSLog(@"converted from string format 3: latitude(signed double), longitude(signed double), sublocation, city, state, postalCode, country, countryCode");
+    NSLog(@"converted back: %@", [QMLocationInfoStringConversion locationInfoUsingString: @"37.870255,-122.259487,Sather Road,Berkeley,California,94720, United States,US"]);
     
     [[LMGeocoder geocoder] geocodeAddressString: @"Sather Gate"
                                         service: kLMGeocoderGoogleService
