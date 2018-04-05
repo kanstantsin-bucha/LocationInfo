@@ -32,6 +32,15 @@
                                                                 location: location];
     QMLocationAnnotation * annotation = [QMLocationAnnotation annotationUsing: info];
     
+    NSLog(@"converted from string format 1: latitude(signed double), longitude(signed double)");
+    NSLog(@"converted back: %@", [QMLocationInfoStringConversion locationInfoUsingString: @"37.870255,-122.259487"]);
+    
+    NSLog(@"converted from string format 2: latitude(signed double), longitude(signed double), city, state, country ");
+    NSLog(@"converted back: %@", [QMLocationInfoStringConversion locationInfoUsingString: @"37.870255,-122.259487,Berkeley,California,United States"]);
+    
+    NSLog(@"converted from string format 3: latitude(signed double), longitude(signed double), sublocation, city, state, country, postalCode, countryCode");
+    NSLog(@"converted back: %@", [QMLocationInfoStringConversion locationInfoUsingString: @"37.870255,-122.259487,Sather Road,Berkeley,California,United States,94720,US"]);
+    
     [[LMGeocoder geocoder] geocodeAddressString: @"Sather Gate"
                                         service: kLMGeocoderGoogleService
                               completionHandler: ^(NSArray<LMAddress *> * _Nullable results, NSError * _Nullable error) {
@@ -50,8 +59,6 @@
         QMLocationInfo * info = [QMLocationInfoAppleConvertion locationInfoUsingPlacemark: placemarks.firstObject];
         NSLog(@"apple %@", info);
     }];
-    
-    
 }
 
 @end

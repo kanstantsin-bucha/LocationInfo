@@ -23,19 +23,13 @@
     
     NSArray * strings = [string componentsSeparatedByString: QMLocationInfoStringDelimiter];
     
-    if (strings.count != 8) {
+    if (strings.count < 2) {
         
         return nil;
     }
     
-    NSString * sublocation = [(NSString *)strings[0] length] != 0 ? strings[0] : nil;
-    NSString * city = [(NSString *)strings[1] length] != 0 ? strings[1] : nil;
-    NSString * state = [(NSString *)strings[2] length] != 0 ? strings[2] : nil;
-    NSString * country = [(NSString *)strings[3] length] != 0 ? strings[3] : nil;
-    NSString * postalCode = [(NSString *)strings[4] length] != 0 ? strings[4] : nil;
-    NSString * countryCode = [(NSString *)strings[5] length] != 0 ? strings[5] : nil;
-    NSString * latitude = [(NSString *)strings[6] length] != 0 ? strings[6] : nil;
-    NSString * longitude = [(NSString *)strings[7] length] != 0 ? strings[7] : nil;
+    NSString * latitude = [(NSString *)strings[0] length] != 0 ? strings[0] : nil;
+    NSString * longitude = [(NSString *)strings[1] length] != 0 ? strings[1] : nil;
     
     double latitudeValue = latitude.doubleValue;
     double longitudeValue = longitude.doubleValue;
@@ -43,6 +37,27 @@
     QMLocation * location = [QMLocation locationUsingLatitude: latitudeValue
                                                     longitude: longitudeValue
                                                     timestamp: nil];
+    NSString * sublocation = nil;
+    NSString * city = nil;
+    NSString * state = nil;
+    NSString * country = nil;
+    NSString * postalCode = nil;
+    NSString * countryCode = nil;
+    
+    if (strings.count == 5) {
+        city = [(NSString *)strings[2] length] != 0 ? strings[2] : nil;
+        state = [(NSString *)strings[3] length] != 0 ? strings[3] : nil;
+        country = [(NSString *)strings[4] length] != 0 ? strings[4] : nil;
+    }
+    
+    if (strings.count == 8) {
+        sublocation = [(NSString *)strings[2] length] != 0 ? strings[2] : nil;
+        city = [(NSString *)strings[3] length] != 0 ? strings[3] : nil;
+        state = [(NSString *)strings[4] length] != 0 ? strings[4] : nil;
+        country = [(NSString *)strings[5] length] != 0 ? strings[5] : nil;
+        postalCode = [(NSString *)strings[6] length] != 0 ? strings[6] : nil;
+        countryCode = [(NSString *)strings[7] length] != 0 ? strings[7] : nil;
+    }
     
     QMLocationInfo * result = [QMLocationInfo locationInfoUsingSublocation: sublocation
                                                                       city: city
@@ -58,14 +73,14 @@
 + (NSString * _Nonnull) srtingRepresentationUsingLocationInfo: (QMLocationInfo * _Nonnull) info {
     
     NSArray * strings = @[
+                           info.location.latitude != 0 ? [NSString stringWithFormat: @"%f", info.location.latitude] : @"",
+                           info.location.longitude != 0 ? [NSString stringWithFormat: @"%f", info.location.longitude] : @"",
                            info.sublocation != nil ? info.sublocation : @"",
                            info.city != nil ? info.city : @"",
                            info.state != nil ? info.state : @"",
                            info.country != nil ? info.country : @"",
                            info.postalCode != nil ? info.postalCode : @"",
                            info.countryCode != nil ? info.countryCode : @"",
-                           info.location.latitude != 0 ? [NSString stringWithFormat: @"%f", info.location.latitude] : @"",
-                           info.location.longitude != 0 ? [NSString stringWithFormat: @"%f", info.location.longitude] : @""
                         ];
     
     NSString * result = [strings componentsJoinedByString: QMLocationInfoStringDelimiter];
